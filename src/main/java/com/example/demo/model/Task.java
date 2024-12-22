@@ -1,7 +1,11 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 public class Task {
 
@@ -16,6 +20,16 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", completed=" + completed +
+                ", eventId=" + (event != null ? event.getId() : "null") +
+                '}';
+    }
 
     // Getters and Setters
 }

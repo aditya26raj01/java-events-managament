@@ -20,6 +20,10 @@ public class EventService {
     }
 
     public Event createEvent(Event event) {
-        return eventRepository.save(event);
+        return eventRepository.saveAndFlush(event);
+    }
+
+    public Event getEvent(Long id) {
+        return eventRepository.findById(id).orElse(null);
     }
 }
